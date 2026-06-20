@@ -16,13 +16,30 @@ async function main() {
   console.log('🌱 Seeding database...');
 
   // 2. Clear existing data if necessary (be careful in production)
-  await db.delete(schema.usersTable).run();
+  //await db.delete(schema.restuarant).run();
 
   // 3. Insert mock data
-  await db.insert(schema.usersTable).values([
-    { name: 'Alice Smith', email: 'alice@example.com' },
-    { name: 'Bob Jones', email: 'bob@example.com' },
-    { name: 'Jane', email: 'jane@example.com' },
+  await db.insert(schema.restuarantTable).values([
+    {
+      name: 'FoodChef',
+      image: 'food_chef.jpg'
+  },
+  {
+      name: 'Chicken',
+      image: 'chicken_zilla.jpg'
+  },
+  {
+      name: 'ChefGanTeng',
+      image: 'chef_ganteng.png'
+  },
+  {
+      name: 'MasterChef',
+      image: 'master_chef.jpg'
+  },
+  {
+      name: 'Organic',
+      image: 'organic.jpg'
+  }
   ]);
 
   console.log('✅ Seeding complete!');
