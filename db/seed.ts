@@ -1,10 +1,10 @@
-import { drizzle } from 'drizzle-orm/better-sqlite3';
-import Database from 'better-sqlite3';
+import { drizzle } from 'drizzle-orm/libsql';
 import * as schema from './schema';
 
-// 1. Connect to your SQLite database
-const sqlite = new Database('local.db');
-const db = drizzle(sqlite, { schema });
+const db = drizzle({ connection: {
+  url: process.env.TURSO_DATABASE_URL!,
+  authToken: process.env.TURSO_AUTH_TOKEN!,
+}});
 
 async function main() {
   console.log('🌱 Seeding database...');
